@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import MainTemplate from '../../templates/MainTemplate/MainTemplate';
 import Header from '../../organisms/Header/Header';
 import TaskForm from '../../organisms/TaskForm/TaskForm';
@@ -51,12 +52,27 @@ export default function HomePage() {
   }
 
   async function handleDelete(id) {
+    const confirmed = await Swal.fire({
+      title: '¿Eliminar tarea?',
+      text: 'No podrás deshacer esta acción',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#e4572e',
+      cancelButtonColor: '#d3d3d3',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (!confirmed.isConfirmed) return;
+
     const previous = tasks;
     setTasks((prev) => prev.filter((t) => t.id !== id));
     try {
       await api.deleteTask(id);
+      Swal.fire('¡Eliminada!', 'La tarea fue eliminada correctamente', 'success');
     } catch {
       setTasks(previous);
+      Swal.fire('Error', 'No se pudo eliminar la tarea', 'error');
     }
   }
 

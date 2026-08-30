@@ -2,7 +2,7 @@
  * Capa de acceso a la API GraphQL. Ningún componente hace fetch() directamente:
  * todos pasan por aquí, igual que el backend centraliza el SQL en repository.py.
  */
-const GRAPHQL_URL = 'http://localhost:8000/graphql';
+const GRAPHQL_URL = import.meta.env.VITE_GRAPHQL_URL || 'http://localhost:8000/graphql';
 
 async function graphqlRequest(query, variables = {}) {
   const res = await fetch(GRAPHQL_URL, {

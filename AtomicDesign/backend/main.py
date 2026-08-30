@@ -59,10 +59,15 @@ graphql_app = GraphQL(schema)
 # Crear aplicación Starlette con middleware CORS
 app = Starlette()
 
-# Middleware CORS: permite que el frontend (Vite, puerto 5173) acceda a la API
+# Middleware CORS: permite que el frontend (Vite, puerto 5173) y cloudflared accedan a la API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://include-resort-fares-lamps.trycloudflare.com",
+        "https://toward-beats-certification-drew.trycloudflare.com",
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
