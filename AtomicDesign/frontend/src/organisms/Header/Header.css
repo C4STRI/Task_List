@@ -1,0 +1,26 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.app-header__stats {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.app-header__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.app-header__stat-number {
+  font-size: 1.6rem !important;
+  color: var(--color-accent);
+}

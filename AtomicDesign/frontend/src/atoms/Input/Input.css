@@ -1,0 +1,18 @@
+.input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+}
+
+.input::placeholder {
+  color: #9aa3b8;
+}
+
+.input:focus-visible {
+  border-color: var(--color-accent);
+}
